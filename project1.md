@@ -68,4 +68,64 @@
 
 <img width="960" alt="confirm php" src="https://user-images.githubusercontent.com/98477745/151279919-8b46c4e4-692e-4fdd-8e6e-b33755e6b1d6.png">
 
+**LAMP stack has been installed completely ands it is in operation**
+
+**- Step 4** Creating a Virtual Host for your website using Apache2
+
+Created a directory for projectlamp using 'mkdir' command
+
+> $ sudo mkdir /var/www/projectlamp
+
+Assigned ownership to the directory with this variable $USER which still referenced the system user
+
+> $ sudo chown -R $USER:$USER /var/www/projectlamp
+
+Created and opened a new configuration file in Apache's sites-available directory using ''vi'' command line editor
+
+> $ sudo vi /etc/apache2/sites-available/projectlamp.conf
+
+
+
+<img width="960" alt="Screenshot 2022-01-27 030211" src="https://user-images.githubusercontent.com/98477745/151291256-3a986cde-b439-4d1b-947a-eb258ee28f57.png">
+
+The below bare-bones configuration by hitting on i on the keyboard to enter the insert mode, and the text:
+  
+  <VirtualHost *:80>
+    ServerName projectlamp
+    ServerAlias www.projectlamp 
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/projectlamp
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+**To save and close the file, simply follow the steps below:**
+
+    Hit the esc button on the keyboard
+    Type :
+    Type wq. w for write and q for quit
+    Hit ENTER to save the file
+    
+Used the below cmdlet to show the new file we created in the sites-available directory
+
+> $ sudo ls /etc/apache2/sites-available
+
+<img width="959" alt="Screenshot 2022-01-27 034740" src="https://user-images.githubusercontent.com/98477745/151291642-fc5ae431-21fe-4739-a962-9d048e2b0ecd.png">
+
+Enabled the new virtualhost created with the below
+
+> $ sudo a2ensite projectlamp
+
+
+
+<img width="960" alt="enabled the virtual host created below" src="https://user-images.githubusercontent.com/98477745/151292018-3dca6fa5-7647-45f4-925d-177ce5bb1098.png">
+
+Disabled the default website that comes installed with Apache with the below
+
+> $ sudo a2dissite 000-default
+
+
+<img width="940" alt="disable the default website that comes with apache" src="https://user-images.githubusercontent.com/98477745/151292043-d6654134-8030-41ab-8288-0216b219bee6.png">
+
+
 
